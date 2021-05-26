@@ -1,0 +1,15 @@
+kind: pipeline
+type: docker
+name: Anki Builder
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+- name: Build Anki
+  image: fedora
+  settings:
+    tags: 34
+  commands:
+  - uname -m
