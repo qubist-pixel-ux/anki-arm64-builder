@@ -12,4 +12,4 @@ steps:
   settings:
     tags: 34
   commands:
-  - ./build.sh
+  - bash build.sh
