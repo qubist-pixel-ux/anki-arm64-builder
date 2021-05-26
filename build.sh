@@ -2,7 +2,8 @@
 export BAZELISK_VER=1.9.0
 export ANKI_VER=2.1.44
 
-## Install bazelisk
+## Install build dependencies
+sudo dnf -y install rsync
 curl -L https://github.com/bazelbuild/bazelisk/releases/download/v${BAZELISK_VER}/bazelisk-linux-arm64 -o ./bazel
 chmod +x bazel && sudo mv bazel /usr/local/bin/
 
@@ -12,7 +13,7 @@ tar -xvf anki.tar.gz
 cd anki-${ANKI_VER} || exit
 
 ##Use pyqt5 from distro
-dnf -y install python3-qt5
+sudo dnf -y install python3-qt5
 echo "build --action_env=PYTHON_SITE_PACKAGES=/usr/lib64/python3.9/site-packages" >> user.bazelrc
 
 ##Build
