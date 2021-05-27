@@ -8,10 +8,10 @@ curl -L https://github.com/bazelbuild/bazelisk/releases/download/v${BAZELISK_VER
 chmod +x bazel && sudo mv bazel /usr/local/bin/
 
 ##Get Anki Source
-#curl -L --output anki.tar.gz https://github.com/ankitects/anki/archive/refs/tags/${ANKI_VER}.tar.gz
-#tar -xvf anki.tar.gz
-#cd anki-${ANKI_VER} || exit
-git clone --depth=1 https://github.com/ankitects/anki
+curl -L --output anki.tar.gz https://github.com/ankitects/anki/archive/refs/tags/${ANKI_VER}.tar.gz
+tar -xvf anki.tar.gz
+cd anki-${ANKI_VER} || echo "Could not change into anki source directory" && exit 1
+#git clone --depth=1 https://github.com/ankitects/anki
 cd anki
 
 ##Use pyqt5 from distro
