@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# enable common error handling options
+set -o errexit
+set -o nounset
+set -o pipefail
+
 export BAZELISK_VER=1.9.0
 export ANKI_VER=2.1.41
 
@@ -8,11 +14,14 @@ curl -L https://github.com/bazelbuild/bazelisk/releases/download/v${BAZELISK_VER
 chmod +x bazel && sudo mv bazel /usr/local/bin/
 
 ##Get Anki Source
+# Github releases
 curl -L --output anki.tar.gz https://github.com/ankitects/anki/archive/refs/tags/${ANKI_VER}.tar.gz
 tar -xvf anki.tar.gz
-cd anki-${ANKI_VER} || echo "Could not change into anki source directory" && exit 1
+cd anki-${ANKI_VER}
+
+# Master branch
 #git clone --depth=1 https://github.com/ankitects/anki
-cd anki
+#cd anki
 
 ##Use pyqt5 from distro
 sudo dnf -y install python3-qt5-devel
