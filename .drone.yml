@@ -13,3 +13,18 @@ steps:
     tags: 34
   commands:
   - bash build.sh
+    
+-name: Publish
+ image: plugins/github-release
+  settings:
+    api_key: 
+      from_secret: Github
+    files:
+      - bazel-bin/dist.tar
+   checksum:
+      - sha256
+ when:
+  event:
+  - promote
+  target:
+  - production
