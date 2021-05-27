@@ -24,6 +24,4 @@ steps:
    - sha256
   when:
    event:
-   - promote
-   target:
-   - production
+   - tag
