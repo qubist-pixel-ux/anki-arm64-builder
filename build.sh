@@ -28,3 +28,4 @@ echo "build --action_env=PYTHON_SITE_PACKAGES=/usr/lib64/python3.9/site-packages
 
 ##Build
 ./scripts/build
+ls --recursive anki-${ANKI_VER}
