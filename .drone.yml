@@ -6,6 +6,9 @@ platform:
   os: linux
   arch: arm64
 
+environment:
+  ANKI_VER: 2.1.41
+
 steps:
 - name: Build Anki
   image: fedora
@@ -19,7 +22,7 @@ steps:
   settings:
    api_key: 
      from_secret: Github
-   files: bazel-bin/dist.tar
+   files: anki-${ANKI_VER}/bazel-bin/dist.tar
    checksum:
    - sha256
   when:
