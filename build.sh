@@ -6,7 +6,6 @@ set -o nounset
 set -o pipefail
 
 export BAZELISK_VER=1.9.0
-export ANKI_VER=2.1.41
 
 ## Install build dependencies
 sudo dnf -y install rsync bash grep findutils curl gcc g++ git rust cargo nodejs
