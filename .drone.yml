@@ -22,7 +22,7 @@ steps:
   settings:
    api_key: 
      from_secret: Github
-   files: anki-${ANKI_VER}/*
+   files: ./*
    checksum:
    - sha256
   when:
