@@ -22,7 +22,7 @@ steps:
   settings:
    api_key: 
      from_secret: Github
-   files: anki-${ANKI_VER}/bazel-bin/dist.tar
+   files: anki-${ANKI_VER}/*
    checksum:
    - sha256
   when:
