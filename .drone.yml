@@ -16,14 +16,14 @@ steps:
     tags: 34
   commands:
   - bash build.sh
-  - tar cf anki-${ANKI_VER}.tar.xz
+  - tar -cf anki.tar.xz
     
 - name: Publish
   image: plugins/github-release
   settings:
    api_key: 
      from_secret: Github
-   files: anki-${ANKI_VER}.tar.xz
+   files: anki.tar.xz
    checksum:
    - sha256
   when:
