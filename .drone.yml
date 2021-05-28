@@ -7,7 +7,7 @@ platform:
   arch: arm64
 
 environment:
-  ANKI_VER: 2.1.42
+  ANKI_VER: 2.1.43
 
 steps:
 - name: Build Anki
