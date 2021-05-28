@@ -16,7 +16,7 @@ steps:
     tags: 34
   commands:
   - bash build.sh
-  - tar -cf anki.tar.xz
+  - tar -cf anki.tar.xz .
     
 - name: Publish
   image: plugins/github-release

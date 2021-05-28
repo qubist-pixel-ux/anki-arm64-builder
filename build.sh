@@ -1,9 +1,7 @@
 #!/bin/bash
 
 # enable common error handling options
-set -o errexit
-set -o nounset
-set -o pipefail
+set -e
 
 export BAZELISK_VER=1.9.0
 
