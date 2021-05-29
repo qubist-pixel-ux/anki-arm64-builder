@@ -1,6 +1,6 @@
 kind: pipeline
 type: docker
-name: Anki Builder
+name: Anki Fedora Builder
 
 platform:
   os: linux
@@ -10,20 +10,49 @@ environment:
   ANKI_VER: 2.1.43
 
 steps:
-- name: Build Anki
-  image: fedora
-  settings:
-    tags: 34
+- name: Build Anki Fedora
+  image: fedora:34
   commands:
-  - bash build.sh
-  - tar -cf anki.tar.xz .
+  - bash build-fedora.sh
+  - tar -cf anki-fedora.tar.xz .
     
 - name: Publish
   image: plugins/github-release
   settings:
    api_key: 
      from_secret: Github
-   files: anki.tar.xz
+   files: anki-fedora.tar.xz
+   checksum:
+   - sha256
+  when:
+   event:
+   - tag
+
+---
+kind: pipeline
+type: docker
+name: Anki Ubuntu Builder
+
+platform:
+  os: linux
+  arch: arm64
+
+environment:
+  ANKI_VER: 2.1.43
+
+steps:
+- name: Build Anki Ubuntu
+  image: ubuntu:21.04
+  commands:
+  - bash build-ubuntu.sh
+  - tar -cf anki-ubuntu.tar.xz .
+    
+- name: Publish
+  image: plugins/github-release
+  settings:
+   api_key: 
+     from_secret: Github
+   files: anki-ubuntu.tar.xz
    checksum:
    - sha256
   when:

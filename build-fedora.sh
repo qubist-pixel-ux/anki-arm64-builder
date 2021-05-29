@@ -12,21 +12,24 @@ chmod +x bazel && sudo mv bazel /usr/local/bin/
 
 ##Get Anki Source
 # Github releases
-curl -L --output anki.tar.gz https://github.com/ankitects/anki/archive/refs/tags/${ANKI_VER}.tar.gz
-tar -xvf anki.tar.gz
-cd anki-${ANKI_VER}
+#curl -L --output anki.tar.gz https://github.com/ankitects/anki/archive/refs/tags/${ANKI_VER}.tar.gz
+#tar -xvf anki.tar.gz
+#cd anki-${ANKI_VER}
 
 # Master branch
-#git clone --depth=1 https://github.com/ankitects/anki
-#cd anki
+git clone --depth=1 https://github.com/ankitects/anki
+cd anki
 
 ##Use pyqt5 from distro
 sudo dnf -y install python3-qt5-devel
 echo "build --action_env=PYTHON_SITE_PACKAGES=/usr/lib64/python3.9/site-packages" >> user.bazelrc
 
 ##Build
-./scripts/build
-ls --recursive
-ls
-echo $(pwd)
+#./scripts/build
+rm -rf bazel-dist
 
+## Build fails sometimes due to Bazel JS rules so run multiple times
+count=0
+until bazel build -k --config opt dist || (( count++ >= 10 )); do
+  echo "Try ${count}"
+done
