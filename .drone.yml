@@ -7,7 +7,7 @@ platform:
   arch: arm64
 
 environment:
-  ANKI_VER: 2.1.43
+  ANKI_VER: 2.1.44
 
 steps:
 - name: Build Anki Fedora
@@ -38,7 +38,7 @@ platform:
   arch: arm64
 
 environment:
-  ANKI_VER: 2.1.43
+  ANKI_VER: 2.1.44
 
 steps:
 - name: Build Anki Ubuntu
